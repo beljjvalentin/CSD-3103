@@ -5,11 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Edit User</title>
+    <style>
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .form-group {
+            flex: 1 1 45%; /* Adjust the width of the columns */
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
+
+<!-- Fixed Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="/users">Users App</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/users">Users</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
     <h1>Edit User</h1>
-    <form action="/users/edit/<%= user._id %>" method="POST">
+    <form action="/users/edit/<%= user._id %>" method="POST" class="form-container">
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" id="firstName" name="firstName" value="<%= user.firstName %>">
@@ -50,11 +73,18 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>">
         </div>
-        <div class="form-group">
+        <div class="form-group" style="flex: 1 1 100%;">
             <label for="userNotes">User Notes</label>
             <textarea class="form-control" id="userNotes" name="userNotes"><%= user.userNotes %></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group" style="flex: 1 1 100%;">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+
+    <!-- Delete button form -->
+    <form action="/users/delete/<%= user._id %>" method="POST" style="margin-top: 20px;">
+        <button type="submit" class="btn btn-danger">Delete User</button>
     </form>
 </div>
 </body>
