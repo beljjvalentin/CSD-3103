@@ -1,0 +1,62 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+        title New User
+        style.
+            .form-container {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .form-group {
+                flex: 1 1 45%; /* Adjust the width of the columns */
+                margin: 10px;
+            }
+    body
+        // Fixed Navbar
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
+            a.navbar-brand(href="/users") Users App
+            .collapse.navbar-collapse
+                ul.navbar-nav
+                    li.nav-item
+                        a.nav-link(href="/users") Users
+
+        .container
+            h1 Create New User
+            form(action="/users" method="POST" class="form-container")
+                .form-group
+                    label(for="firstName") First Name
+                    input.form-control(type="text" id="firstName" name="firstName" required)
+                .form-group
+                    label(for="lastName") Last Name
+                    input.form-control(type="text" id="lastName" name="lastName" required)
+                .form-group
+                    label(for="dateOfBirth") Date of Birth
+                    input.form-control(type="date" id="dateOfBirth" name="dateOfBirth" required)
+                .form-group
+                    label(for="address1") Address 1
+                    input.form-control(type="text" id="address1" name="address1" required)
+                .form-group
+                    label(for="address2") Address 2
+                    input.form-control(type="text" id="address2" name="address2")
+                .form-group
+                    label(for="city") City
+                    input.form-control(type="text" id="city" name="city" required)
+                .form-group
+                    label(for="postalCode") Postal Code
+                    input.form-control(type="text" id="postalCode" name="postalCode" required)
+                .form-group
+                    label(for="country") Country
+                    input.form-control(type="text" id="country" name="country" required)
+                .form-group
+                    label(for="phoneNumber") Phone Number
+                    input.form-control(type="text" id="phoneNumber" name="phoneNumber" required)
+                .form-group
+                    label(for="email") Email
+                    input.form-control(type="email" id="email" name="email" required)
+                .form-group(style="flex: 1 1 100%")
+                    label(for="userNotes") User Notes
+                    textarea.form-control(id="userNotes" name="userNotes")
+                button.btn.btn-primary(type="submit") Create User

@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    title Users
+  body
+    // Fixed Navbar
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
+      a.navbar-brand(href="/users") Users App
+      .collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href="/users") Users
+
+    .container
+      h1 Users
+      a.btn.btn-primary(href="/users/new") Add New User
+      table.table.table-bordered
+        thead
+          tr
+            th First Name
+            th Last Name
+            th(style="min-width: 110px;") Date of Birth
+            th Address
+            th City
+            th Postal Code
+            th Country
+            th Phone Number
+            th Email
+            th Notes
+            th Actions
+        tbody
+          each user in users
+            tr
+              td= user.firstName
+              td= user.lastName
+              td= user.dateOfBirth.toISOString().split('T')[0]
+              td= `${user.address1} ${user.address2}`
+              td= user.city
+              td= user.postalCode
+              td= user.country
+              td= user.phoneNumber
+              td= user.email
+              td= user.userNotes
+              td
+                a.btn.btn-warning(href=`/users/edit/${user._id}`) Edit
+                form(action=`/users/delete/${user._id}` method="POST" style="display:inline;")
+                  button.btn.btn-danger(type="submit") Delete

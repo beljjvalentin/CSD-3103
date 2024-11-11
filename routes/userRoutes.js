@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 // Display form to create a new user
 router.get('/users/new', (req, res) => {
-    res.render('newUser');
+    res.render('new');
 });
 
 // Create
@@ -24,7 +24,7 @@ router.get('/users', async (req, res) => {
 // Update
 router.get('/users/edit/:id', async (req, res) => {
     const user = await User.findById(req.params.id);
-    res.render('editUser', { user });
+    res.render('edit', { user });
 });
 
 router.post('/users/edit/:id', async (req, res) => {
